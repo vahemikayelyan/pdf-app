@@ -1,0 +1,14 @@
+<button (click)="createNewPdf()">Create</button>
+<div id="pdfContainer" style="text-align: center">
+  <div class="pdf-page-wrapper" *ngFor="let page of pdfPages">
+    <canvas #myCanvas></canvas>
+    <span
+      *ngFor="let item of page.data"
+      [style.left.px]="item.left"
+      [style.top.px]="item.top"
+      [style.font-size.px]="item.fontSize"
+      [style.font-family]="item.fontFamily"
+      >{{ item.str }}</span
+    >
+  </div>
+</div>

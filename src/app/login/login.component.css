@@ -1,0 +1,19 @@
+section,
+section form div {
+  display: flex;
+}
+
+section {
+  justify-content: center;
+}
+
+section form div {
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+section form div,
+section form div label {
+  margin-right: 1rem;
+}

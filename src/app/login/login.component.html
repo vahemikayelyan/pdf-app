@@ -1,0 +1,15 @@
+<section>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">E-mail: </label>
+      <input id="email" type="text" autocomplete="on" formControlName="email" />
+    </div>
+
+    <div>
+      <label for="password">Password: </label>
+      <input id="password" type="text" formControlName="password" />
+    </div>
+
+    <p><button [disabled]="!loginForm.valid || isInProcess">Login</button></p>
+  </form>
+</section>

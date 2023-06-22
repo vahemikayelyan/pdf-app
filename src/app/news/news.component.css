@@ -1,0 +1,10 @@
+.pdf-page-wrapper {
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin-bottom: 2em;
+  position: relative;
+}
+
+.pdf-page-wrapper span {
+  position: absolute;
+}

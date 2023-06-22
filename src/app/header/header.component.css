@@ -1,0 +1,145 @@
+nav,
+nav ul {
+  background-color: #333;
+}
+
+nav {
+  padding: 0 1rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav-bar > li > ul.child-items {
+  position: absolute;
+  min-width: 200px;
+  width: 100%;
+  right: 0;
+}
+
+ul.child-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 80ms ease-in-out;
+}
+
+li.open > ul.child-items {
+  max-height: 600px;
+}
+
+ul li {
+  position: relative;
+  cursor: pointer;
+}
+
+ul.nav-bar > li,
+ul.nav-bar > li > span {
+  display: inline-block;
+}
+
+ul.child-items > li,
+ul.child-items > li > span {
+  display: block;
+}
+
+ul li span {
+  color: white;
+  margin: 0;
+}
+
+ul li span i {
+  position: relative;
+  margin-left: 8px;
+  bottom: 2px;
+}
+
+li.open > span,
+ul > li:not(.active) > span:hover {
+  background-color: #000;
+}
+
+li.open > span.child-toggle i {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  bottom: 0 !important;
+}
+
+ul li.active {
+  background-color: #04aa6d;
+}
+
+ul li.bar-toggle,
+ul li > span {
+  padding: 1rem;
+}
+
+ul li span.child-toggle {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul li.bar-toggle {
+  width: 31px;
+  display: none;
+  background: #000;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.bar-toggle div {
+  height: 4px;
+  margin-bottom: 3px;
+  background-color: #d6d6d6;
+  transition: 0.4s;
+}
+
+.bar-toggle:hover div {
+  background-color: white;
+}
+
+.bar-toggle div:last-child {
+  margin-bottom: 0;
+}
+
+ul.open .bar-toggle div:nth-child(1) {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+ul.open .bar-toggle div:nth-child(2) {
+  opacity: 0;
+}
+
+ul.open .bar-toggle div:nth-child(3) {
+  transform: translate(0, -7px) rotate(45deg);
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 0;
+  }
+
+  ul.nav-bar > li > ul.child-items {
+    position: static;
+  }
+
+  ul li:not(:first-child) {
+    display: none;
+  }
+
+  ul.open li,
+  ul.open li > span {
+    display: block;
+  }
+
+  ul li.bar-toggle {
+    display: inline-block;
+  }
+
+  ul li.right {
+    float: none;
+  }
+}

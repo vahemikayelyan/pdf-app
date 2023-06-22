@@ -1,0 +1,11 @@
+<div
+  id="snackBar"
+  [class.closed]="closed"
+  (animationend)="animationDone($event)"
+>
+  <div class="snackbar-header">
+    <strong>{{ title }}</strong>
+    <button (click)="close()">X</button>
+  </div>
+  <div class="snackbar-content">{{ message }}</div>
+</div>

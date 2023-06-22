@@ -1,0 +1,52 @@
+<nav>
+  <ul class="nav-bar" [class.open]="navBarOpen">
+    <ng-container
+      [ngTemplateOutlet]="navItemsTemp"
+      [ngTemplateOutletContext]="{ navItems: navBarItems }"
+    >
+    </ng-container>
+    <li class="bar-toggle" (click)="navBarOpen = !navBarOpen">
+      <div></div>
+      <div></div>
+      <div></div>
+    </li>
+  </ul>
+</nav>
+
+<ng-template #navItemsTemp let-navItems="navItems">
+  <ng-container *ngFor="let navItem of navItems">
+    <ng-container
+      [ngTemplateOutlet]="navItem?.children ? childNavItem : parentNavItem"
+      [ngTemplateOutletContext]="{ navItem }"
+    >
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #childNavItem let-navItem="navItem">
+  <li [ngClass]="{ open: !!navItem?.open, right: !!navItem?.right }">
+    <span class="child-toggle" (click)="toggleChildItems(navItem)">
+      <span>{{ navItem?.label }}</span>
+      <span class="right"><i class="arrow"></i></span>
+    </span>
+    <ul class="child-items">
+      <ng-container
+        [ngTemplateOutlet]="navItemsTemp"
+        [ngTemplateOutletContext]="{ navItems: navItem?.children }"
+      >
+      </ng-container>
+    </ul>
+  </li>
+</ng-template>
+
+<ng-template #parentNavItem let-navItem="navItem">
+  <li
+    (click)="selectNavItem(navItem)"
+    [ngClass]="{ right: !!navItem?.right }"
+    [routerLinkActiveOptions]="{ exact: !!navItem?.exact }"
+    [routerLink]="navItem?.path"
+    routerLinkActive="active"
+  >
+    <span>{{ navItem?.label }}</span>
+  </li>
+</ng-template>
